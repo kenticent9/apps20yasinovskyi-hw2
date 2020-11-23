@@ -1,12 +1,12 @@
 package ua.edu.ucu.collections.immutable;
 
 public final class ImmutableLinkedList implements ImmutableList {
-    Node head;
-    int len;
+    private Node head;
+    private int len;
 
     static class Node {
-        Object data;
-        Node next;
+        private Object data;
+        private Node next;
 
         Node(Object data) {
             this.data = data;
@@ -17,16 +17,16 @@ public final class ImmutableLinkedList implements ImmutableList {
             return data;
         }
 
-        public void setData(Object data) {
-            this.data = data;
+        public void setData(Object toSet) {
+            data = toSet;
         }
 
         public Node getNext() {
             return next;
         }
 
-        public void setNext(Node next) {
-            this.next = next;
+        public void setNext(Node toSet) {
+            next = toSet;
         }
 
         /* Analog of Python's deepcopy */
@@ -72,24 +72,23 @@ public final class ImmutableLinkedList implements ImmutableList {
     static Node insert(Node node, Object data)
     {
         Node temp = new Node(data);
-        Node curNode;
         if (node == null) {
-            node = temp;
-        } else {
-            curNode = node;
-            while (curNode.next != null)
-                curNode = curNode.next;
-            curNode.next = temp;
+            return temp;
         }
+        Node curNode = node;
+        while (curNode.getNext() != null) {
+            curNode = curNode.getNext();
+        }
+        curNode.setNext(temp);
         return node;
     }
 
     private Node arrayToList(Object[] c) {
-        Node head = null;
+        Node newHead = null;
         for (Object o : c) {
-            head = insert(head, o);
+            newHead = insert(newHead, o);
         }
-        return head;
+        return newHead;
     }
 
     @Override
@@ -167,7 +166,7 @@ public final class ImmutableLinkedList implements ImmutableList {
         while (curNode != null && !curNode.getData().equals(e)) {
             curNode = curNode.getNext();
             i++;
-        };
+        }
         return (curNode != null) ? i : -1;
     }
 

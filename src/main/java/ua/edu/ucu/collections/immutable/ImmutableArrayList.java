@@ -10,8 +10,8 @@ public final class ImmutableArrayList implements ImmutableList {
     }
 
     public ImmutableArrayList(Object[] elems) {
-        this.elems = elems;  // There's no need to clone the passed elements, because
-                             // it was already done in the previous methods
+        this.elems = elems.clone();  // Clone in case the user will want to
+                                     // instantiate the array
     }
 
     @Override
@@ -36,7 +36,8 @@ public final class ImmutableArrayList implements ImmutableList {
         }
         Object[] newElems = new Object[elems.length+c.length];
         System.arraycopy(elems, 0, newElems, 0, index);
-        System.arraycopy(elems, index, newElems, index+c.length, elems.length-index);
+        System.arraycopy(elems, index, newElems, index+c.length,
+                elems.length-index);
         System.arraycopy(c, 0, newElems, index, c.length);
         return new ImmutableArrayList(newElems);
     }
@@ -58,7 +59,8 @@ public final class ImmutableArrayList implements ImmutableList {
         System.arraycopy(elems, 0, newElems, 0, index);
         /* If the element is not the last */
         if (index != elems.length-1) {
-            System.arraycopy(elems, index+1, newElems, index, elems.length-index-1);
+            System.arraycopy(elems, index+1, newElems, index,
+                    elems.length-index-1);
         }
         return new ImmutableArrayList(newElems);
     }
