@@ -94,4 +94,40 @@ public class ImmutableLinkedListTest {
         ImmutableList list = new ImmutableLinkedList().add(1).add(2).add(3);
         assertEquals("1 2 3 ", list.toString());
     }
+
+    @Test
+    public void testAddFirst() {
+        ImmutableLinkedList list = new ImmutableLinkedList().addFirst(1);
+        assertArrayEquals(new Object[] {1}, list.toArray());
+    }
+
+    @Test
+    public void testAddLast() {
+        ImmutableLinkedList list = new ImmutableLinkedList().addLast(1);
+        assertArrayEquals(new Object[] {1}, list.toArray());
+    }
+
+    @Test
+    public void testGetFirst() {
+        ImmutableLinkedList list = new ImmutableLinkedList().addFirst(1);
+        assertEquals(1, list.getFirst());
+    }
+
+    @Test
+    public void testGetLast() {
+        ImmutableLinkedList list = new ImmutableLinkedList().addFirst(1);
+        assertEquals(1, list.getLast());
+    }
+
+    @Test
+    public void testRemoveFirst() {
+        ImmutableLinkedList list = new ImmutableLinkedList().addFirst(1).removeFirst();
+        assertArrayEquals(new Object[] {}, list.toArray());
+    }
+
+    @Test
+    public void testRemoveLast() {
+        ImmutableLinkedList list = new ImmutableLinkedList().addFirst(1).removeLast();
+        assertArrayEquals(new Object[] {}, list.toArray());
+    }
 }

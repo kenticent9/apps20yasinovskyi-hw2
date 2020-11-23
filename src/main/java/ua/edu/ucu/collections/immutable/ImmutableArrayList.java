@@ -15,22 +15,22 @@ public final class ImmutableArrayList implements ImmutableList {
     }
 
     @Override
-    public ImmutableList add(Object e) {
+    public ImmutableArrayList add(Object e) {
         return addAll(elems.length, new Object[] {e});
     }
 
     @Override
-    public ImmutableList add(int index, Object e) {
+    public ImmutableArrayList add(int index, Object e) {
         return addAll(index, new Object[] {e});
     }
 
     @Override
-    public ImmutableList addAll(Object[] c) {
+    public ImmutableArrayList addAll(Object[] c) {
         return addAll(elems.length, c);
     }
 
     @Override
-    public ImmutableList addAll(int index, Object[] c) {
+    public ImmutableArrayList addAll(int index, Object[] c) {
         if (index < 0 || index > elems.length) {
             throw new IndexOutOfBoundsException();
         }
@@ -50,7 +50,7 @@ public final class ImmutableArrayList implements ImmutableList {
     }
 
     @Override
-    public ImmutableList remove(int index) {
+    public ImmutableArrayList remove(int index) {
         if (index < 0 || index >= elems.length) {
             throw new IndexOutOfBoundsException();
         }
@@ -64,7 +64,7 @@ public final class ImmutableArrayList implements ImmutableList {
     }
 
     @Override
-    public ImmutableList set(int index, Object e) {
+    public ImmutableArrayList set(int index, Object e) {
         if (index < 0 || index >= elems.length) {
             throw new IndexOutOfBoundsException();
         }
@@ -89,7 +89,7 @@ public final class ImmutableArrayList implements ImmutableList {
     }
 
     @Override
-    public ImmutableList clear() {
+    public ImmutableArrayList clear() {
         return new ImmutableArrayList();
     }
 

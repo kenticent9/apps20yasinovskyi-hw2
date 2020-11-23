@@ -55,17 +55,17 @@ public final class ImmutableLinkedList implements ImmutableList {
     }
 
     @Override
-    public ImmutableList add(Object e) {
+    public ImmutableLinkedList add(Object e) {
         return addAll(len, new Object[] {e});
     }
 
     @Override
-    public ImmutableList add(int index, Object e) {
+    public ImmutableLinkedList add(int index, Object e) {
         return addAll(index, new Object[] {e});
     }
 
     @Override
-    public ImmutableList addAll(Object[] c) {
+    public ImmutableLinkedList addAll(Object[] c) {
         return addAll(len, c);
     }
 
@@ -93,7 +93,7 @@ public final class ImmutableLinkedList implements ImmutableList {
     }
 
     @Override
-    public ImmutableList addAll(int index, Object[] c) {
+    public ImmutableLinkedList addAll(int index, Object[] c) {
         if (index < 0 || index > len) {
             throw new IndexOutOfBoundsException();
         }
@@ -129,7 +129,7 @@ public final class ImmutableLinkedList implements ImmutableList {
     }
 
     @Override
-    public ImmutableList remove(int index) {
+    public ImmutableLinkedList remove(int index) {
         if (index < 0 || index >= len) {
             throw new IndexOutOfBoundsException();
         }
@@ -147,7 +147,7 @@ public final class ImmutableLinkedList implements ImmutableList {
     }
 
     @Override
-    public ImmutableList set(int index, Object e) {
+    public ImmutableLinkedList set(int index, Object e) {
         if (index < 0 || index >= len) {
             throw new IndexOutOfBoundsException();
         }
@@ -177,7 +177,7 @@ public final class ImmutableLinkedList implements ImmutableList {
     }
 
     @Override
-    public ImmutableList clear() {
+    public ImmutableLinkedList clear() {
         return new ImmutableLinkedList();
     }
 
@@ -209,11 +209,11 @@ public final class ImmutableLinkedList implements ImmutableList {
         return sb.toString();
     }
 
-    public ImmutableList addFirst(Object e) {
+    public ImmutableLinkedList addFirst(Object e) {
         return add(0, e);
     }
 
-    public ImmutableList addLast(Object e) {
+    public ImmutableLinkedList addLast(Object e) {
         return add(len, e);
     }
 
@@ -225,11 +225,11 @@ public final class ImmutableLinkedList implements ImmutableList {
         return get(len-1);
     }
 
-    public ImmutableList removeFirst() {
+    public ImmutableLinkedList removeFirst() {
         return remove(0);
     }
 
-    public ImmutableList removeLast() {
+    public ImmutableLinkedList removeLast() {
         return remove(len-1);
     }
 }
