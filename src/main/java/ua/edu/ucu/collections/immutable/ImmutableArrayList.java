@@ -16,19 +16,12 @@ public final class ImmutableArrayList implements ImmutableList {
 
     @Override
     public ImmutableList add(Object e) {
-        return add(elems.length, e);
+        return addAll(elems.length, new Object[] {e});
     }
 
     @Override
     public ImmutableList add(int index, Object e) {
-        if (index < 0 || index > elems.length) {
-            throw new IndexOutOfBoundsException();
-        }
-        Object[] newElems = new Object[elems.length+1];
-        System.arraycopy(elems, 0, newElems, 0, index);
-        System.arraycopy(elems, index, newElems, index+1, elems.length-index);
-        newElems[index] = e;
-        return new ImmutableArrayList(newElems);
+        return addAll(index, new Object[] {e});
     }
 
     @Override
