@@ -97,37 +97,37 @@ public class ImmutableLinkedListTest {
 
     @Test
     public void testAddFirst() {
-        ImmutableLinkedList list = new ImmutableLinkedList().addFirst(1);
-        assertArrayEquals(new Object[] {1}, list.toArray());
+        ImmutableLinkedList list = new ImmutableLinkedList().addAll(new Object[] {1, 2, 3}).addFirst(4);
+        assertArrayEquals(new Object[] {4, 1, 2, 3}, list.toArray());
     }
 
     @Test
     public void testAddLast() {
-        ImmutableLinkedList list = new ImmutableLinkedList().addLast(1);
-        assertArrayEquals(new Object[] {1}, list.toArray());
+        ImmutableLinkedList list = new ImmutableLinkedList().addAll(new Object[] {1, 2, 3}).addLast(4);
+        assertArrayEquals(new Object[] {1, 2, 3, 4}, list.toArray());
     }
 
     @Test
     public void testGetFirst() {
-        ImmutableLinkedList list = new ImmutableLinkedList().addFirst(1);
+        ImmutableLinkedList list = new ImmutableLinkedList().addAll(new Object[] {1, 2, 3});
         assertEquals(1, list.getFirst());
     }
 
     @Test
     public void testGetLast() {
-        ImmutableLinkedList list = new ImmutableLinkedList().addFirst(1);
-        assertEquals(1, list.getLast());
+        ImmutableLinkedList list = new ImmutableLinkedList().addAll(new Object[] {1, 2, 3});
+        assertEquals(3, list.getLast());
     }
 
     @Test
     public void testRemoveFirst() {
-        ImmutableLinkedList list = new ImmutableLinkedList().addFirst(1).removeFirst();
-        assertArrayEquals(new Object[] {}, list.toArray());
+        ImmutableLinkedList list = new ImmutableLinkedList().addAll(new Object[] {1, 2, 3}).removeFirst();
+        assertArrayEquals(new Object[] {2, 3}, list.toArray());
     }
 
     @Test
     public void testRemoveLast() {
-        ImmutableLinkedList list = new ImmutableLinkedList().addFirst(1).removeLast();
-        assertArrayEquals(new Object[] {}, list.toArray());
+        ImmutableLinkedList list = new ImmutableLinkedList().addAll(new Object[] {1, 2, 3}).removeLast();
+        assertArrayEquals(new Object[] {1, 2}, list.toArray());
     }
 }

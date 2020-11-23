@@ -54,6 +54,11 @@ public final class ImmutableLinkedList implements ImmutableList {
         this.len = len;
     }
 
+    public ImmutableLinkedList(Object[] c) {
+        head = arrayToList(c);
+        len = c.length;
+    }
+
     @Override
     public ImmutableLinkedList add(Object e) {
         return addAll(len, new Object[] {e});
@@ -69,7 +74,7 @@ public final class ImmutableLinkedList implements ImmutableList {
         return addAll(len, c);
     }
 
-    static Node insert(Node node, Object data)
+    private static Node insert(Node node, Object data)
     {
         Node temp = new Node(data);
         if (node == null) {
@@ -83,7 +88,7 @@ public final class ImmutableLinkedList implements ImmutableList {
         return node;
     }
 
-    private Node arrayToList(Object[] c) {
+    private static Node arrayToList(Object[] c) {
         Node newHead = null;
         for (Object o : c) {
             newHead = insert(newHead, o);
@@ -99,6 +104,13 @@ public final class ImmutableLinkedList implements ImmutableList {
         Node newHead;
         if (head == null) {
             newHead = arrayToList(c);
+        } else if (index == 0) {
+            newHead = arrayToList(c);
+            Node curNode = newHead;
+            while (curNode.getNext() != null) {
+                curNode = curNode.getNext();
+            }
+            curNode.setNext(head.myCopy());
         } else {
             newHead = head.myCopy();
             Node curNode = newHead;
